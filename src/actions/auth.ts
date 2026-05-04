@@ -2,7 +2,7 @@ import api from './api';
 
 export const loginAction = async (data: any) => {
   try {
-    const response = await api.post('/auth/login', data);
+    const response = await api.post('/auth/signin', data);
     if (response.data.success) {
       localStorage.setItem('accessToken', response.data.data.accessToken);
       // Decode JWT or use returned data to save user role
