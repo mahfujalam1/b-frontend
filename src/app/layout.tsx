@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Hisab Nikash Pro",
   description: "Hisab Nikash Pro",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 import { Toaster } from 'sonner';
