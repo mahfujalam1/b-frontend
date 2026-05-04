@@ -4,12 +4,12 @@ import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogFooter 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,10 +36,10 @@ export function AddPartnerModal({ isOpen, onClose, onSuccess }: AddPartnerModalP
 
   const onSubmit: SubmitHandler<PartnerForm> = async (data) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/users/create-partner', data, {
+      const response = await axios.post('https://hisab-nikash-server.vercel.app/api/v1/users/create-partner', data, {
         headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` }
       });
-      
+
       if (response.data.success) {
         toast.success('Partner created and welcome email sent!');
         reset();
@@ -63,7 +63,7 @@ export function AddPartnerModal({ isOpen, onClose, onSuccess }: AddPartnerModalP
             <Input {...register('name')} placeholder="e.g., John Doe" className="bg-white/5 border-white/10" />
             {errors.name && <p className="text-red-500 text-xs">{errors.name.message}</p>}
           </div>
-          
+
           <div className="space-y-2">
             <Label>Email Address</Label>
             <Input type="email" {...register('email')} placeholder="partner@company.com" className="bg-white/5 border-white/10" />
@@ -75,8 +75,8 @@ export function AddPartnerModal({ isOpen, onClose, onSuccess }: AddPartnerModalP
           </p>
 
           <DialogFooter>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isSubmitting}
               className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-primary/20 active:scale-[0.98] disabled:opacity-50"
             >
